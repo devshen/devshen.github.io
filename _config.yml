@@ -1,0 +1,22 @@
+# Site settings
+title: DevShen Blog
+header-img: img/home-bg.jpg
+email: shenquan1129@gmail.com
+description: "Write The Code, Change The World!"
+baseurl: ""
+url: "http://devshen.github.io"
+twitter_username: quan_shen
+github_username:  devshen
+facebook_username:  quan.shen.921
+
+# Build settings
+markdown: redcarpet
+# extensions: ["no_intra_emphasis","autolink","space_after_headers","strikethrough","fenced_code_blocks", "tables", "highlight", "strikethrough"]
+#markdown: redcarpet
+extensions: ["no_intra_emphasis","autolink","space_after_headers","strikethrough","fenced_code_blocks", "tables", "highlight", "strikethrough"]
+
+markdown_ext: md,markdown,mkd,mkdn
+highlighter: pygments
+permalink: pretty
+paginate: 5
+exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
