@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "如何在iOS中调用Lua"
-subtitle:   ""
+subtitle:   "OC和Lua交互的原理过程，新手级别"
 date:       2015-01-30 12:00:00
 author:     "Shen Quan"
 header-img: "img/post-bg-01.jpg"
@@ -16,13 +16,13 @@ header-img: "img/post-bg-01.jpg"
 ## 初始化实例应用
 首先新建个工程
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewProject.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewProject.png)
 
 再创建一个继承于```UIView```的新类```CubeView```
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFile.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFile.png)
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFileWithUIView.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFileWithUIView.png)
 
 在```CubeView.h```中输入以下代码:
 
@@ -156,9 +156,9 @@ CubeView *cubeTarget;
 
 2.下载后的文件解压后会看到名为```src```的文件夹，里面就是我们需要的，将```src```文件夹改名为```lua```，删除其中的```MakeFile```、```lua.c```、```luac.c```文件，将```lua```文件夹拖到工程中，记住不要选择```create external build system box```
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-1.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-1.png)
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-2.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-2.png)
 
 这样Lua就嵌入到工程中了。
 
@@ -218,7 +218,7 @@ Lua提供了C API，通过这些接口，Lua和C被连接起来，对Lua的操�
 
 ```lua_settop(L, 0);``` 这是将栈的栈顶索引设置为指定的数值(此处为0)，这个怎么理解，看下图
 
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/LuaStack.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/LuaStack.png)
 
 Lua栈的栈顶索引为-1，依次往下；而栈底为1，依次往上，比如说，一个栈原来有6个元素，调用```lua_settop(L, index)```设置index为5，就是把栈从下往上第5个(也就是“abc”字符串)作为栈顶，那么也就是删掉"111"这个栈顶元素，这是相对于栈底元素设置的；如果是相对于栈顶元素，要实现同样的小刚，就要设置索引为-2，也相当于删除掉栈顶元素。
 
@@ -262,8 +262,8 @@ int luaopen_cubeLib (lua_State *L){
 ```
 
 下面我们来创建一个lua脚本
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-1.png)
-![](https://github.com/devshen/devshen.github.io/blob/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-2.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-1.png)
+![](https://github.com/devshen/devshen.github.io/raw/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-2.png)
 
 编辑Lua脚本如下
 
