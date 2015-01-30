@@ -16,13 +16,13 @@ header-img: "img/post-bg-01.jpg"
 ## 初始化实例应用
 首先新建个工程
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/CreateNewProject.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewProject.png)
 
 再创建一个继承于```UIView```的新类```CubeView```
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/CreateNewFile.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFile.png)
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/CreateNewFileWithUIView.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/CreateNewFileWithUIView.png)
 
 在```CubeView.h```中输入以下代码:
 
@@ -156,9 +156,9 @@ CubeView *cubeTarget;
 
 2.下载后的文件解压后会看到名为```src```的文件夹，里面就是我们需要的，将```src```文件夹改名为```lua```，删除其中的```MakeFile```、```lua.c```、```luac.c```文件，将```lua```文件夹拖到工程中，记住不要选择```create external build system box```
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/ImportLua-1.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-1.png)
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/ImportLua-2.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/ImportLua-2.png)
 
 这样Lua就嵌入到工程中了。
 
@@ -218,7 +218,7 @@ Lua提供了C API，通过这些接口，Lua和C被连接起来，对Lua的操�
 
 ```lua_settop(L, 0);``` 这是将栈的栈顶索引设置为指定的数值(此处为0)，这个怎么理解，看下图
 
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/LuaStack.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/LuaStack.png)
 
 Lua栈的栈顶索引为-1，依次往下；而栈底为1，依次往上，比如说，一个栈原来有6个元素，调用```lua_settop(L, index)```设置index为5，就是把栈从下往上第5个(也就是“abc”字符串)作为栈顶，那么也就是删掉"111"这个栈顶元素，这是相对于栈底元素设置的；如果是相对于栈顶元素，要实现同样的小刚，就要设置索引为-2，也相当于删除掉栈顶元素。
 
@@ -262,8 +262,8 @@ int luaopen_cubeLib (lua_State *L){
 ```
 
 下面我们来创建一个lua脚本
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/CreateLua-1.png)
-![](https://github.com/devshen/devshen.github.io/img/2015-01-30-Use_Lua_in_iOS/CreateLua-2.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-1.png)
+![](https://github.com/devshen/devshen.github.io/tree/master/img/2015-01-30-Use_Lua_in_iOS/CreateLua-2.png)
 
 编辑Lua脚本如下
 
@@ -433,7 +433,7 @@ end
 ```
 这里就使用了```lua_pushlightuserdata```来传数据.
 
-运行，就会看到绿色方块会朝着紫色方块移动，当你拖拽紫色方块后，绿色方块也会改变方向，而这一系列行为逻辑并没有写在工程代码中，而是写在了Lua脚本中，而Lua脚本是可以通过网络下载进应用中，也就能够改变绿色方块的运行逻辑了
+运行，就会看到绿色方块会朝着紫色方块移动，当你拖拽紫色方块后，绿色方块也会改变方向，而这一系列行为逻辑并没有写在工程代码中，而是写在了Lua脚本中，而Lua脚本是可以通过网络下载进应用中，也就能够改变绿色方块的运行逻辑了。
 
 # 总结
 总结下iOS调用Lua的过程：
@@ -447,3 +447,6 @@ end
 - 再通过```lua_pcall```调用获取到的函数
 - 在运行Lua脚本的函数时，脚本调用了OC注册到Lua环境中的函数
 - 调用OC方法，改变界面或者业务逻辑
+
+
+完整工程可以在这边现在[GitHub](https://github.com/devshen/DVSLua)下载，如果觉得有用，请Star，谢谢
