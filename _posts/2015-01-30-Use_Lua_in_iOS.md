@@ -110,9 +110,7 @@ CubeView *cubeTarget;
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	cubeTarget = [[CubeView alloc]initWithFrame:CGRectMake(120,100,20,20)
-											   Speed:10
-												Name:@"Target"];
+	cubeTarget = [[CubeView alloc]initWithFrame:CGRectMake(120,100,20,20) Speed:10 Name:@"Target"];
 	[cubeTarget setBackgroundColor:[UIColor purpleColor]];
 	[self.view addSubview:cubeTarget];
 	
@@ -152,7 +150,7 @@ CubeView *cubeTarget;
 
 现在准备将**Lua**嵌入到工程中
 
-1.首先，需要获取Lua源码[LuaResource](http://www.lua.org/ftp/lua-5.1-tar.gz)，本篇博文使用的是Lua5.1版本，5.2,5.3的版本改变了函数注册的方式，不适配本博文的代码。
+1.首先，需要获取Lua源码[LuaResource](http://www.lua.org/ftp/lua-5.1-tar.gz)，本篇博文使用的是Lua5.1版本，5.2,5.3的版本改变了函数注册的方式，不适配本文的代码。
 
 2.下载后的文件解压后会看到名为```src```的文件夹，里面就是我们需要的，将```src```文件夹改名为```lua```，删除其中的```MakeFile```、```lua.c```、```luac.c```文件，将```lua```文件夹拖到工程中，记住不要选择```create external build system box```
 
@@ -164,7 +162,7 @@ CubeView *cubeTarget;
 
 ## Lua的Hello World
 
-Lua提供了C API，通过这些接口，Lua和C被连接起来，对Lua的操作就是靠这些C API，在C环境和Lua环境中间，有一个Lua栈，Lua与C的交互其实就是通过对这个Lua栈的中转来实现的
+Lua提供了C API，通过这些接口，Lua和C被连接起来，对Lua的操作就是靠这些C API，在C环境和Lua环境中间，有一个Lua栈，Lua与C的交互其实就是通过对这个Lua栈的操作。
 
 在```ViewController.h```中导入Lua的头文件
 
@@ -199,13 +197,13 @@ Lua提供了C API，通过这些接口，Lua和C被连接起来，对Lua的操�
 	int err;	
 	err = luaL_loadstring(L, "print("Hello, world")");	
 	if (0 != err) {
-		luaL_error(L, "cannot compile lua file: %s",lua_tostring(L, -1));
+		luaL_error(L, "compile error: %s",lua_tostring(L, -1));
 		return;
 	}
 	
 	err = lua_pcall(L, 0, 0, 0);
 	if (0 != err) {
-		luaL_error(L, "cannot run lua file: %s",lua_tostring(L, -1));
+		luaL_error(L, "run error: %s",lua_tostring(L, -1));
 		return;
 	}
 }
@@ -240,9 +238,9 @@ int cubeTarget_position(lua_State *L){
 	return 2;
 }
 ```
-再看来下，```lua_pushnumber(L,a)```表示将变量**a**压入Lua栈，方法还返回了压入的数据数量
+再看来下，```lua_pushnumber(L,a)```表示将变量**a**压入Lua栈
 
-这个方法的目的很明显，现在我们有了能够通过stack将对象中心点位置传给Lua栈的函数，不过想要Lua脚本能够调用它，还需要将这个函数与Lua环境绑定起来，我们可以通过```luaL_register```函数，将一组方法与Lua绑定，那么，在```ViewController.m```中添加下面方法
+这个方法的目的很明显，现在我们有了能将对象中心点位置传给Lua栈的函数，不过想要Lua脚本能够调用它，还需要将这个函数与Lua环境绑定起来，我们可以通过```luaL_register```函数，将一组方法与Lua绑定，那么，在```ViewController.m```中添加下面方法
 
 ```objective-c
 const struct luaL_Reg cubeLib[] = {
@@ -255,7 +253,7 @@ int luaopen_cubeLib (lua_State *L){
 	return 1;
 }
 ```
-其中```luaL_Reg```类型的数组，包含一组函数，这个数组通过```luaL_newlib```将函数传递给了Lua，这样，Lua脚本就能识别这些"注册"了的函数，```luaopen_cubeLib```方法需要在run脚本前调用，我们可以在```initLuaState```方法中的```lua_settop(L,0)```下写上
+其中```luaL_Reg```类型的数组，包含一组函数，这个数组通过```luaL_register```将函数传递给了Lua，这样，Lua脚本就能识别这些"注册"了的函数，```luaopen_cubeLib```方法需要在run脚本前调用，我们可以在```initLuaState```方法中的```lua_settop(L,0)```下写上
 
 ```objective-c
 	luaopen_cubeLib(L);
@@ -270,7 +268,7 @@ int luaopen_cubeLib (lua_State *L){
 ```c
 function print_cube_position()
 
-cube_x, cube_y = cubeLib.cubeP()
+cube_x, cube_y = myLib.cubeP()
 
 print(string.format("cube is at (%f, %f)", cube_x, cube_y))
 
@@ -350,7 +348,7 @@ int get_cube_position(lua_State *L){
 	return 2;
 }
 ```
-这里我们用了新的lua方法```lua_touserdata```，它能够向Lua传递指针，这些指针是我们在OC中创建的。
+这里我们用了新的lua方法```lua_touserdata(L,index)```，如果给定索引处的值是一个完整的userdata，函数返回内存块的地址。如果值是一个lightuserdata，那么就返回它表示的指针。
 
 下一步，将新写的方法加入到注册数组中去，并且都取好名字(取名字不容易)
 
@@ -442,9 +440,9 @@ end
 - 加载基本库```luaL_openlibs```
 - 将需要被Lua脚本使用的函数注册到Lua环境中```lua_register```
 - 加载Lua脚本```luaL_loadfile```
-- OC代码通过```lua_getglobal```获取到Lua脚本中的函数
+- OC代码通过```lua_getglobal```将Lua脚本中的函数压入栈
 - 通过```lua_pushlightuserdata```传递数据
-- 再通过```lua_pcall```调用获取到的函数
+- 再通过```lua_pcall```调用函数
 - 在运行Lua脚本的函数时，脚本调用了OC注册到Lua环境中的函数
 - 调用OC方法，改变界面或者业务逻辑
 
