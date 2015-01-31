@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "如何在iOS中调用Lua"
-subtitle:   "OC和Lua交互的原理过程，新手级别"
+subtitle:   "OC和Lua交互的过程原理和实践"
 date:       2015-01-30 12:00:00
 author:     "Shen Quan"
 header-img: "img/post-bg-01.jpg"
