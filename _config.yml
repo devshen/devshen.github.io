@@ -8,7 +8,10 @@ url: "http://devshen.github.io"
 twitter_username: quan_shen
 github_username:  devshen
 facebook_username:  quan.shen.921
-
+analytics :
+  provider : google 
+  google : 
+      tracking_id : 'UA-59213538-1'
 # Build settings
 markdown: redcarpet
 # extensions: ["no_intra_emphasis","autolink","space_after_headers","strikethrough","fenced_code_blocks", "tables", "highlight", "strikethrough"]
