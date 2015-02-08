@@ -10,6 +10,8 @@ header-img: "img/post-bg-02.jpg"
 # 【译】ReacativeCocoa教程 1/2
 > 本文译自```ReactiveCocoa Tutorial – The Definitive Introduction: Part 1/2``` post by **Colin Eberhardt** [原文链接](http://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1)
 
+> [第二部分教程翻译](http://devshen.github.io/2015/02/09/ReactiveCocoaTutorial-2/)
+
 作为一名iOS开发者，基本上你写的每一行代码都是在响应一些事件：一个按钮的点击，一条接收到的网络信息，一个属性的变化（通过KVO）或者用户地理位置的变化（通过```CoreLocation```）,但是，这些事件使用了不同的编写方式比如actions，delegates，KVO，callbacks等。[ReactiveCocoa](https://github.com/ReactiveCocoa/ReactiveCocoa)为这些事件定义了一种统一的标准接口，使得事件能够更加容易的通过一个基本的工具集来联结，过滤和组合。
 
 听起来有点疑惑?感兴趣?...有点小激动?那么，继续往下读吧 :]
@@ -548,8 +550,10 @@ block 的入参是一个 subscribe 实例，遵循 RACSubscriber 协议，其有
 
 ReactiveCocoa 是为了让你的代码更加清晰，更容易理解。个人认为，如果一个应用它的业务逻辑使用 fluent 句法，用信息的 pipeline 来表述，它就更加容易理解。
 
-在本教程的 [second Part](http://www.raywenderlich.com/62796/reactivecocoa-tutorial-pt2) 中，你会学习到进阶的 subjects 比如 error 处理，以及如何管理在不同线程上运行的代码，在这之前，have fun experimenting!
+在本教程的 [second Part](http://www.raywenderlich.com/62796/reactivecocoa-tutorial-pt2) 中，你会学习到进阶的 subjects 比如 error 处理，以及如何管理在不同线程上运行的代码，在这之前，have fun experimenting! 
 
-> 译者注: 工作比较忙，加班比较多，第二部分的教程还没翻译好，一旦翻译完成，我会在本文的开头和结尾附上翻译地址，在此，感谢原作者 **Colin Eberhardt** 的分享，大家有兴趣可以去他的Blog看看，更多精彩哦~，再附上 [原文链接](http://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1)，[Colin Eberhardt's Blog](http://www.scottlogic.com/blog/ceberhardt/)，[Colin Eberhardt's Github](https://github.com/colineberhardt)
+[第二部分教程翻译](http://devshen.github.io/2015/02/09/ReactiveCocoaTutorial-2/)
+
+> 译者注:在此，感谢原作者 **Colin Eberhardt** 的分享，大家有兴趣可以去他的Blog看看，更多精彩哦~，再附上 [原文链接](http://www.raywenderlich.com/62699/reactivecocoa-tutorial-pt1)，[Colin Eberhardt's Blog](http://www.scottlogic.com/blog/ceberhardt/)，[Colin Eberhardt's Github](https://github.com/colineberhardt)
 
 大家如果喜欢这篇博客，可添加feed订阅，<font color="orange">follow</font> 我的[Github](https://github.com/devshen)，我会将自己的学习心得分享出来，谢谢~ :]
