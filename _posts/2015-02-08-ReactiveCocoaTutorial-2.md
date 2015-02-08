@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "ReacativeCocoa教程 2/2"
-subtitle:   ""
+subtitle:   "发现已有相关译文发布，在此贴出链接"
 date:       2015-02-09 12:00:00
 author:     "Shen Quan"
 header-img: "img/post-bg-03.jpg"
