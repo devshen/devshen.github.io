@@ -18,5 +18,5 @@ header-img: "img/post-bg-03.jpg"
 
 [ReactiveCocoa 结合 MVVM 教程 1/2：Flickr搜索实例](http://southpeak.github.io/blog/2014/08/08/mvvmzhi-nan-yi-:flickrsou-suo-shi-li/)
 
-[ReactiveCocoa 结合 MVVM 教程 1/2：Flickr搜索深入](http://southpeak.github.io/blog/2014/08/12/mvvmzhi-nan-er-:flickrsou-suo-shen-ru/)
+[ReactiveCocoa 结合 MVVM 教程 2/2：Flickr搜索深入](http://southpeak.github.io/blog/2014/08/12/mvvmzhi-nan-er-:flickrsou-suo-shen-ru/)
 
