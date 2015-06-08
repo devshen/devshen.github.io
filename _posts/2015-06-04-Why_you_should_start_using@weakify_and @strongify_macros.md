@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "为什么你应该开始使用@weakify和@strongify 宏定义"
-subtitle:   "本文通过一个示例，一步步构建分析代码，解析 ReactiveCocoa 的编程方式和思想精髓，熟悉其最常用的属性和方法，开启函数响应式编程的大门"
+subtitle:   "相对于传统的打破循环引用的‘Weak/Strong圆舞曲’,@weakify和@strongify能够保证后续扩展维护的安全性"
 date:       2015-06-04 21:00:00
 author:     "Shen Quan"
 header-img: "img/post-bg-02.jpg"
@@ -15,7 +15,7 @@ header-img: "img/post-bg-02.jpg"
 ## 避免循环引用的标准做法
 假设我们的类有一个属性叫做 model, 我们想要当 model 中的 data 变化的时候，有一个 label 的 text 会随之改变，为了达到这目的，我们设置 model :
 
-```obejctive-c 
+```objective-c 
 - (void)setUpModel
 {
 	Model *model = [Model new];
