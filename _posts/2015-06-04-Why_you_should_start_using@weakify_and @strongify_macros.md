@@ -46,7 +46,7 @@ header-img: "img/post-bg-02.jpg"
 #define weakify(var) __weak typeof(var) AHKWeak_##var = var;
 #define strongify(var) \
 _Pragma("clang diagnostic push") \
-_Pragma("calng diagnostic ignored \"-Wshadow\"") \
+_Pragma("clang diagnostic ignored \"-Wshadow\"") \
 __strong typeof(var) var = AHKWeak_##var; \
 _Pragma("clang diagnostic pop")
 ```
