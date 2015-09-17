@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      "iOS开发的日常"
+title:      "iOSDev的日常提升"
 subtitle:   "谈谈自己平时是如何提升自己的，以及对些问题的看法"
 date:       2015-09-18 04:48:00
 author:     "Shen Quan"
 header-img: "img/post-bg-03.jpg"
 
 ---
-## iOSDev的日常
+## iOSDev的日常提升
 
 ###0.前言
 iOS开发3年了，近日询问带的新人平时是如何学习提高自己的，通过回答，感觉还是稍欠了点。
