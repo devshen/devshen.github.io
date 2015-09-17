@@ -33,11 +33,17 @@ iOS开发3年了，近日询问带的新人平时是如何学习提高自己的�
 - 综合性的科技信息门户网站
 
 > 1.[Medium](https://medium.com)(老外的博客站，其中不少iOS的好文)
+
 > 2.[Hacker News](https://news.ycombinator.com) or [StartUp News](http://news.dbanotes.net/news)(我早期时候经常看，用来拓展下视野还是可以的)
+
 > 3.[Appcoda](http://www.appcoda.com)(老外的专注iOS的博客站)
+
 > 4.[Raywenderlich](http://www.raywenderlich.com/)(苹果开发的百科全书)
+
 > 5.[dailytekk](http://dailytekk.com)
+
 > 6.[CocoaChina](http://www.cocoachina.com)(大家都知道的)
+
 > 7.有好多，就不一一列举了
 
 - 个人的博客
@@ -47,11 +53,18 @@ iOS开发3年了，近日询问带的新人平时是如何学习提高自己的�
 - 邮件订阅
 
 > 稍微举几个例子:
+
 > 1.[iOS Goodies](http://ios-goodies.com)
+
 > 2.[OurCoders](http://ourcoders.com/home/) (那个可爱的胖子，大家应该知道的)
-> 3.Natasha The Robot (Swift相关的)
+
+> 3.[Natasha The Robot](https://swiftnews.curated.co) (Swift相关的)
+
 > 4.[码农周刊](http://weekly.manong.io/)
-> 5.iOS Dev Weekly (一个胖老外，质量很好)
+
+> 5.[iOS Dev Weekly](https://iosdevweekly.com) (一个胖老外，质量很好)
+
+> 6.[SwiftSandBox](http://swiftsandbox.io)
 
 - 微博
 
